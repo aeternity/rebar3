@@ -40,13 +40,14 @@ jobs:
               tag=${CIRCLE_TAG} ASSETS=rebar3
 
 workflows:
-  build_push:
+  build_publish:
     jobs:
       - build:
           filters:
             tags:
               only: /.*/
       - publish:
+          context: ae-library
           requires:
             - build
           filters:
